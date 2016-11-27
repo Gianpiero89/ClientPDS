@@ -295,38 +295,27 @@ namespace clientTCP
                                             while(true)
                                             {
                                                 mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                                MessageBox.Show(mycmd);
                                                 if (mycmd.Equals("++++END")) break;
 
-                                                if (mycmd.Equals("+++FILE"))
-                                                {
-                                                    MessageBox.Show(mycmd);
-                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                if (mycmd.Equals("+++FILE") || mycmd.Equals("+++NEXT"))
+                                                { 
+                                                    
                                                     int dim = client.reciveDimension(client.CLIENT.GetStream());
-                                                    MessageBox.Show("Dimension : " + dim.ToString());
                                                     client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                    mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                                    MessageBox.Show("cmd : "+ mycmd);
-                                                    if (mycmd.Equals("+++++OK"))
-                                                    {
-                                                        string name = client.reciveVersion(dim, client.CLIENT.GetStream());
-                                                        Console.WriteLine("name : " + name);
-                                                        client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                        mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                                        if (mycmd.Equals("+++++OK"))
-                                                        {
-                                                            dim = client.reciveDimension(client.CLIENT.GetStream());
-                                                            client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                            mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                                            if (mycmd.Equals("+++++OK"))
-                                                            {
-                                                                client.ReciveFile(backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION + @"\", name, dim, client.CLIENT.GetStream());
-                                                                clientSend("+++++OK");
-                                                               
-                                                            }
-                                                        }
-                                                    }
-
+                                                    string relative = client.reciveVersion(dim, client.CLIENT.GetStream());
+                                                    Console.WriteLine("path : " + relative);
+                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                    dim = client.reciveDimension(client.CLIENT.GetStream());
+                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                    string name = client.reciveVersion(dim, client.CLIENT.GetStream());
+                                                    Console.WriteLine("fileName : " + name);
+                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                    dim = client.reciveDimension(client.CLIENT.GetStream());
+                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                    client.ReciveFile(Directory.GetCurrentDirectory() + @"\" + backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION + @"\", relative, name, dim, client.CLIENT.GetStream());
+                                                    Console.WriteLine("finish\n");
+                                                    clientSend("+++++OK");
+                                                    
                                                 }
                                             } 
                                         }
