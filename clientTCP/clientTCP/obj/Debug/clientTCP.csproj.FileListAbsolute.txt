@@ -1,0 +1,106 @@
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\App.g.cs
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+c:\users\gianpiero\documents\visual studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.dll
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gianpiero\Documents\Visual Studio 2013\Projects\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.xml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.dll
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.xml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Izio\Desktop\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Izio\Dropbox\Progetto pds Versione con db\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Dropbox\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Dropbox\Progetto pds Versione con db\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.dll
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.xml
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Gianpiero\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.dll
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.xml
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Virna\Documents\Visual Studio 2015\Projects\ProgettoPDS v1.1\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
