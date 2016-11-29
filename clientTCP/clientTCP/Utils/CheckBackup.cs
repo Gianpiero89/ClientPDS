@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +13,11 @@ namespace clientTCP.Utils
         private String time;  // Data del backup
         private Boolean _isChecked; // Utilizzato nella ListView per vedere quale dei backup ripristinare 
 
-        public CheckBackup(string name, string version, string time)
+        public CheckBackup(String name, String version, String time)
         {
             this.name = name;
             this.version = version;
             this.time = time;
-            this._isChecked = false;
         }
 
 
@@ -69,12 +67,7 @@ namespace clientTCP.Utils
             set
             {
                 _isChecked = value;
-                
             }
         }
-
-     
-
-
     }
 }

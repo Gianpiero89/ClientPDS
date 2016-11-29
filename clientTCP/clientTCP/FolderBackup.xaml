@@ -15,7 +15,7 @@
                     <GridViewColumn Header="Select" Width="45">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding CHECK, Mode=TwoWay}" Click="CheckBox_Click"/>
+                                <RadioButton IsChecked="{Binding CHECK}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

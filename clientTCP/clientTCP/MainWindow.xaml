@@ -3,21 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Login" Height="245" Width="372" ResizeMode="NoResize">
 
-        <Window.Resources>
+    <Window.Resources>
         <Color x:Key="Color1">#FFD7E4F2</Color>
     </Window.Resources>
     <Grid RenderTransformOrigin="0.5,0.5" Margin="0">
         <Grid.Background>
             <SolidColorBrush Color="#FFFFFF"/>
         </Grid.Background>
-        <Label Content="FolderBackup" HorizontalAlignment="Center" Margin="0,25,0,155" VerticalAlignment="Center" FontFamily="Calibri" FontSize="21" Height="38"/>
+        <Label Content="SafeBox" HorizontalAlignment="Center" Margin="0,25,0,155" VerticalAlignment="Center" FontFamily="Verdana" FontSize="24" Height="40"/>
         <TextBox x:Name="usernameTxtBox" HorizontalAlignment="Left" Height="23" Margin="167,82,0,0" VerticalAlignment="Top" Width="157" TextWrapping="Wrap"/>
-        <Button Content="Connect" Name="Connect" HorizontalAlignment="Left" Margin="80,154,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.66,2.788" Height="24" Click="Button_Click"/>
-        <Button Content="Clear" Name="Clear" HorizontalAlignment="Left" Margin="225,154,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.66,2.788" Height="24" Click="Button_Click"/>
+        <Button Content="Connect" Name="Connect" HorizontalAlignment="Left" Margin="207,149,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.66,2.788" Height="24" Click="Button_Click"/>
         <PasswordBox x:Name="paswordTxtBox" HorizontalAlignment="Left" Margin="167,110,0,0" VerticalAlignment="Top" Height="23" Width="157"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="55,77,0,0" VerticalAlignment="Top" Height="28" FontFamily="Calibri" FontSize="16"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="55,105,0,0" VerticalAlignment="Top" Height="28" FontFamily="Calibri" FontSize="16"/>
-       <Label x:Name="registerLabel" Content="Not yet registered? Sign up!" Margin="114,183,103,10" VerticalAlignment="Center" Height="23" Width="149" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="registerLabel_MouseLeave" MouseLeftButtonDown="registerLabel_MouseLeftButtonDown" FontFamily="Calibri"/>
+        <Label x:Name="registerLabel" Content="  Not yet registered? Sign up!" Margin="167,178,41.6,10.2" VerticalAlignment="Center" Height="27" Width="157" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="registerLabel_MouseLeave" MouseLeftButtonDown="registerLabel_MouseLeftButtonDown" FontFamily="Calibri"/>
 
     </Grid>
 </Window>
