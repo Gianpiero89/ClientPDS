@@ -22,14 +22,19 @@ namespace clientTCP
 
     public partial class RegisterWindow : Window
     {
-        private Network.Client client;
+
         private volatile Boolean _isRunning = false;
         public Window parent { get; set; }
+       
+        private Network.Client client;
 
         public RegisterWindow()
         {
           
             InitializeComponent();
+      
+            _isRunning = true;
+          
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -50,36 +55,37 @@ namespace clientTCP
             }
 
             TcpClient tmp = new TcpClient();
-            _isRunning = true;
             // ip e porta del server fissati 
             tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("1500"));
-           
             client = new Network.Client(tmp);
-      /*  t = new Thread(new ParameterizedThreadStart(threadProc));
-            t.Start(client);
-            command = "++LOGIN";
-
-            BackupServiceClient server = new BackupServiceClient();  
-          //  string salt = server.registerStep1(username)
-                
-                ;
-            if (salt == null)
+            string ccc = client.reciveComand(client.CLIENT.GetStream());
+          
+            if (ccc.Equals("+++OPEN"))
             {
-                MessageBox.Show(this, "Username already choosen! Try another!", "Registration problem", MessageBoxButton.OK);
-                return;
+
+                client.sendCommand("++++REG", client.CLIENT.GetStream());
+                client.sendFileDimension(username.Length, client.CLIENT.GetStream());
+
+                ccc = client.reciveComand(client.CLIENT.GetStream());
+                if (ccc.Equals("+++++OK"))
+                       client.sendData(username, client.CLIENT.GetStream());
+
+                ccc = client.reciveComand(client.CLIENT.GetStream());
+                if (ccc.Equals("+++++OK"))
+                    client.sendFileDimension(password.Length, client.CLIENT.GetStream());
+
+                ccc = client.reciveComand(client.CLIENT.GetStream());
+                if (ccc.Equals("+++++OK"))
+                    client.sendData(password, client.CLIENT.GetStream());
 
             }
-            if (server.registerStep2(username, AuthenticationPrimitives.hashPassword(password, salt), salt))
-            {
+///////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            //CONTROLLARE SE TUTTO E' ANDATO A BUON FINE
                 MessageBox.Show(this, "Registration succeed. You can log in now.", "Registration succeed!", MessageBoxButton.OK);
                 this.Hide();
                 this.parent.Activate();
                 this.parent.Show();
-            }
-            else
-            {
-                MessageBox.Show(this, "Registration procedure failed!", "Error", MessageBoxButton.OK);
-            }*/
+            ///////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA         
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -88,6 +94,10 @@ namespace clientTCP
             this.parent.Activate();
         }
 
-
+        private void clientSend(string text)
+        {
+            if (client.isConnected())
+                client.sendCommand(text, client.CLIENT.GetStream());
+        }
     }
 }

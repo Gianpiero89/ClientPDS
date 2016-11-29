@@ -131,7 +131,7 @@ namespace clientTCP.Network
             return "";
         }
 
-        public void ReciveFile(String path, String relative, String name, int dim, NetworkStream ns)
+        public void ReciveFile(String path, String name, int dim, NetworkStream ns)
         {
 
             // Buffer for reading data
@@ -140,14 +140,11 @@ namespace clientTCP.Network
             int i;
             Int32 numberOfTotalBytes = dim;
             Int32 byteRecivied = 0;
-
-            if (!Directory.Exists(path + relative + @"\"))
+            if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory(path + relative + @"\");
+                Directory.CreateDirectory(path);
             }
-
-
-            FileStream fs = new FileStream(path + relative + @"\" + name, FileMode.OpenOrCreate);
+            FileStream fs = new FileStream(path + @"\" + name, FileMode.Create, FileAccess.ReadWrite);
 
 
             if (dim < lenght)

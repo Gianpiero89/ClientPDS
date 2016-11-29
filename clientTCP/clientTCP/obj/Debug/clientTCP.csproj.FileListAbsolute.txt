@@ -127,3 +127,6 @@ C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP_Ma
 C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
 C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
 C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Izio\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.pdb

@@ -47,7 +47,7 @@ namespace clientTCP
         //LOGIN
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string t = ConnectServer();
+           string t = ConnectServer();
             Console.WriteLine(t);
             if (t != null)
             {
@@ -209,6 +209,7 @@ namespace clientTCP
                                             password = paswordTxtBox.Password;
                                         }), DispatcherPriority.ContextIdle);
                                         // ricorda di fare un sha-1 della password
+
                                         myClient.sendFileDimension(username.Length + password.Length + 1, ns);
                                         cmd = myClient.reciveComand(ns);
                                         if (cmd.Equals("+++++OK"))
