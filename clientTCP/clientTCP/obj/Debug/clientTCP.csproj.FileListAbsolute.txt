@@ -127,3 +127,29 @@ C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP_Ma
 C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
 C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
 C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.dll
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.xml
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Izio\Desktop\Progetto PDS v2.0 xD\Repos\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
