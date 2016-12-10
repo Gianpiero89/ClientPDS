@@ -42,15 +42,20 @@ namespace clientTCP
         private String absolutePath;
         private String relativePath;
         private String xml;
-        private String command = "";
         private List<Utils.CheckBackup> backupList;
         FileSystemWatcher watcher;
 
-       
 
 
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (client != null)
+            {
+                client.sendCommand("++CLOSE", client.CLIENT.GetStream());    
+            }
 
-
+            base.OnClosing(e);
+        }
 
         public FolderBackup(string cnt)
         {
@@ -124,12 +129,6 @@ namespace clientTCP
 
             } 
 
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            _isRunning = false;
         }
 
         public void DirSearch(String path)
@@ -212,7 +211,13 @@ namespace clientTCP
                     while (_isRunning)
                     {
                         cmd = client.reciveComand(ns);
-                        if (cmd.Equals("+++LIST"))
+                        if (cmd.Equals("++CLOSE"))
+                        {
+                            client.close();
+                            _isRunning = false;
+                            return;
+                        }
+                            if (cmd.Equals("+++LIST"))
                         {
                             int dim = client.reciveDimension(ns);
                             Console.WriteLine(dim);
@@ -230,7 +235,7 @@ namespace clientTCP
                             {
                                 box.ItemsSource = backupList;
                             }), DispatcherPriority.ContextIdle);
-                            command = "";
+                            cmd = "";
 
 
                         }
@@ -258,11 +263,11 @@ namespace clientTCP
                                             client.sendFile(path, ns);
                                             client.sendCommand("+++++OK", ns);
                                         }
-                                    }
-                                clientSend("+++LIST");
-                                command = "";
+                                    }  
                             }
-                         }
+                            clientSend("+++LIST");
+                            cmd = "";
+                        }
 
                     if (cmd.Equals("RESTORE"))
                     {
@@ -324,8 +329,11 @@ namespace clientTCP
                             }
                      }
                 }
+             return;
             }).Start();
+             return;
             }
+            return;
         }
 
 
@@ -345,8 +353,6 @@ namespace clientTCP
 
         public void OnChanged(object source, FileSystemEventArgs e)
         {
-            //Console.WriteLine("File: " + e.FullPath + " " + e.ChangeType);
-
             this.lstFilesFound.Clear();
             this.info.Clear();
             this.files.Clear();
@@ -355,14 +361,17 @@ namespace clientTCP
             classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
             xml = classes.Function.DictToXml(this.files, relativePath);
             
-            MessageBox.Show("Aggiorno");
+            MessageBox.Show("Rilevata modifica dei files presenti nella cartella selezionata\n Aggiornamento versione Backup");
             clientSend("+BACKUP"); 
 
         }
 
         private void disconnect_Click(object sender, RoutedEventArgs e)
         {
-
+            client.sendCommand("++CLOSE", client.CLIENT.GetStream());
+            this.Close();
+            parent.Activate();
+            parent.Show();
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)

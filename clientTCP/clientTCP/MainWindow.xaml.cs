@@ -32,7 +32,7 @@ namespace clientTCP
     {
         public Window parent { get; set; }
         //private TcpClient client;
-        private Network.Client client;
+        private Network.Client client = null;
         private Thread t;
         private volatile Boolean _isRunning = false;
         private String username;
@@ -60,6 +60,17 @@ namespace clientTCP
 
         }
 
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (client != null)
+            {
+                client.sendCommand("++CLOSE", client.CLIENT.GetStream());
+                client.close();
+            }
+
+            base.OnClosing(e);
+        }
+
 
         private string ConnectServer()
         {
@@ -72,7 +83,11 @@ namespace clientTCP
                     // ip e porta del server fissati 
                     tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("1500"));
                     client = new Network.Client(tmp);
-                    return login(); 
+                  
+                    string str =  login();
+                    client.close();
+                    client = null;
+                    return str;
                     //t = new Thread(new ParameterizedThreadStart(threadProc));
                     //
                     //t.Start(client);
@@ -158,95 +173,6 @@ namespace clientTCP
             return null;
         }
 
-
-
-
-
-
-
-        public void threadProc(object client)
-        {
-
-
-            string cmd;
-
-            Network.Client myClient = (Network.Client)client;
-            NetworkStream ns = myClient.CLIENT.GetStream();
-
-            try
-            {
-
-                while (_isRunning)
-                {
-                    cmd = myClient.reciveComand(ns);
-                    if (cmd.Equals("++CLOSE"))
-                    {
-                        myClient.sendCommand("++CLOSE", ns);
-                        Connect.Dispatcher.Invoke(new Action(() =>
-                        {
-                            Connect.Content = "Login";
-                        }), DispatcherPriority.ContextIdle);
-                        _isRunning = false;
-                        myClient.close();
-                        return;
-                    }
-                    if (cmd.Equals("+++OPEN"))
-                    {
-                        while (_isRunning)
-                        {
-                            if (command != "")
-                            {
-                                myClient.sendCommand(command, ns);
-
-                                if (command.Equals("++LOGIN"))
-                                {
-                                    cmd = myClient.reciveComand(ns);
-                                    if (cmd.Equals("+++++OK"))
-                                    {
-                                        Connect.Dispatcher.Invoke(new Action(() =>
-                                        {
-                                            username = usernameTxtBox.Text;
-                                            password = paswordTxtBox.Password;
-                                        }), DispatcherPriority.ContextIdle);
-                                        // ricorda di fare un sha-1 della password
-                                        myClient.sendFileDimension(username.Length + password.Length + 1, ns);
-                                        cmd = myClient.reciveComand(ns);
-                                        if (cmd.Equals("+++++OK"))
-                                        {
-                                            string tmp = username + ":" + password;
-
-                                            myClient.sendData(tmp, ns);
-                                            tmp = myClient.reciveComand(ns);
-
-                                            if (tmp.Equals("++CLOSE"))
-                                            {
-                                                MessageBox.Show("Username o Password errati!");
-                                                command = "";
-                                                myClient.close();
-                                                this.client = null;
-                                                _isRunning = false;
-                                                return;
-                                            }
-                                            else
-                                            {
-                                                return;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-                return;
-            }
-
-
-        }
 
         //REGISTRAZIONE
         private void Label_MouseEnter(object sender, MouseEventArgs e)
