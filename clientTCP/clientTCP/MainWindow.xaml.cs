@@ -31,16 +31,19 @@ namespace clientTCP
     public partial class MainWindow : Window
     {
         public Window parent { get; set; }
-        //private TcpClient client;
+
         private Network.Client client = null;
         private Thread t;
         private volatile Boolean _isRunning = false;
         private String username;
         private String password;
-        private String command = "";
+        public Boolean Registrazione = false;
 
+        
         public MainWindow()
         {
+            Trayicon.Instance();
+
             InitializeComponent();
         }
 
@@ -49,6 +52,7 @@ namespace clientTCP
         {
             string t = ConnectServer();
             Console.WriteLine(t);
+
             if (t != null)
             {
                 FolderBackup rw = new FolderBackup(t);
@@ -56,6 +60,7 @@ namespace clientTCP
                 rw.Show();
                 rw.Activate();
                 this.Hide();
+               
             }
 
         }
@@ -131,20 +136,38 @@ namespace clientTCP
             string cmd;
             Network.Client myClient = client;
             NetworkStream ns = myClient.CLIENT.GetStream();
-
+            errorBox_Username.Visibility = System.Windows.Visibility.Hidden;
+            errorBox_Password.Visibility = System.Windows.Visibility.Hidden;
             cmd = myClient.reciveComand(ns);
+      
             if (cmd.Equals("+++OPEN"))
             {
+                Connect.Dispatcher.Invoke(new Action(() =>
+                {
+                    username = usernameTxtBox.Text;
+                    password = paswordTxtBox.Password;
+                }), DispatcherPriority.ContextIdle);
+
+            
+                if (username.Equals(""))
+                {
+                    errorBox_Username.Visibility = System.Windows.Visibility.Visible;
+                   
+                }
+                    
+
+                if (password.Equals(""))
+                {
+                    errorBox_Password.Visibility = System.Windows.Visibility.Visible;
+           
+                }
+
                 myClient.sendCommand("++LOGIN", ns);
                 cmd = myClient.reciveComand(ns);
                 if (cmd.Equals("+++++OK"))
                 {
-                    Connect.Dispatcher.Invoke(new Action(() =>
-                    {
-                        username = usernameTxtBox.Text;
-                        password = paswordTxtBox.Password;
-                    }), DispatcherPriority.ContextIdle);
-                    // ricorda di fare un sha-1 della password
+                    
+                  
                     myClient.sendFileDimension(username.Length + password.Length + 1, ns);
                     cmd = myClient.reciveComand(ns);
                     if (cmd.Equals("+++++OK"))
@@ -161,6 +184,7 @@ namespace clientTCP
                         }
                         else
                         {
+                            errorBox.Visibility = System.Windows.Visibility.Visible; 
                             myClient.close();
                             return null;
                         }
@@ -194,8 +218,14 @@ namespace clientTCP
             rw.Show();
             rw.Activate();
             this.Hide();
+            this.errorBox.Visibility = System.Windows.Visibility.Hidden;
+            this.errorBox_Username.Visibility = System.Windows.Visibility.Hidden;
+            this.errorBox_Password.Visibility = System.Windows.Visibility.Hidden;
+            this.usernameTxtBox.Text = String.Empty;
+            this.paswordTxtBox.Password = String.Empty;
         }
 
+       
     }
    
 

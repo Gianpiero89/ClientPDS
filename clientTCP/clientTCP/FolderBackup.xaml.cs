@@ -169,7 +169,7 @@ namespace clientTCP
             {
                 absolutePath = dlg.SelectedPath;
                 relativePath = absolutePath.Substring(absolutePath.LastIndexOf(@"\") + 1);
-
+                Choose_Folder.Content = absolutePath;
                 this.lstFilesFound.Clear();
                 this.info.Clear();
                 this.files.Clear();

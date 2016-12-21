@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Net.Sockets;
+using System.Threading;
 
 
 namespace clientTCP
@@ -26,8 +27,8 @@ namespace clientTCP
 
         private volatile Boolean _isRunning = false;
         public Window parent { get; set; }
-
         private Network.Client client;
+        private Boolean Errore = false;
 
         public RegisterWindow()
         {
@@ -42,18 +43,26 @@ namespace clientTCP
         {
             string username = this.usernameTxtBox.Text;
             string password = this.passwordTxtBox.Password;
+            errorBox_Username.Visibility = System.Windows.Visibility.Hidden;
+            errorBox_Password.Visibility = System.Windows.Visibility.Hidden;
 
+            /////////////////////////////////////////////////////////////////////
             if (username.Equals(""))
             {
-                MessageBox.Show(this, "Username cannot be empty!", "Missing username", MessageBoxButton.OK);
-                return;
+                errorBox_Username.Visibility = System.Windows.Visibility.Visible;
+                Errore = true; 
             }
+
 
             if (password.Equals(""))
             {
-                MessageBox.Show(this, "Password cannot be empty!", "Missing password", MessageBoxButton.OK);
-                return;
+                errorBox_Password.Visibility = System.Windows.Visibility.Visible;
+                Errore = true;
             }
+
+
+            if (Errore) return;
+            ////////////////////////////////////////////////////////////////
 
             TcpClient tmp = new TcpClient();
             // ip e porta del server fissati 
@@ -63,7 +72,7 @@ namespace clientTCP
 
             if (ccc.Equals("+++OPEN"))
             {
-
+             
                 client.sendCommand("++++REG", client.CLIENT.GetStream());
                 client.sendFileDimension(username.Length, client.CLIENT.GetStream());
 
@@ -80,13 +89,17 @@ namespace clientTCP
                     client.sendData(password, client.CLIENT.GetStream());
 
             }
-            ///////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            //CONTROLLARE SE TUTTO E' ANDATO A BUON FINE
-            MessageBox.Show(this, "Registration succeed. You can log in now.", "Registration succeed!", MessageBoxButton.OK);
+
+
+            errorBox.Content = "Registration succeed";
+            errorBox.Visibility = System.Windows.Visibility.Visible;
+            errorBox.Foreground = Brushes.Green;
+      
+            System.Threading.Thread.Sleep(1000);
             this.Hide();
             this.parent.Activate();
             this.parent.Show();
-            ///////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA         
+              
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -99,6 +112,14 @@ namespace clientTCP
         {
             if (client.isConnected())
                 client.sendCommand(text, client.CLIENT.GetStream());
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+                this.Hide();
+                this.parent.Show();
+                this.parent.Activate();
+
         }
     }
 }
