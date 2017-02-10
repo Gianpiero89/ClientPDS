@@ -182,3 +182,6 @@ C:\Users\Izio\Desktop\malnati 2.1\ClientPDS-master\ClientPDS-master\clientTCP\cl
 C:\Users\Izio\Desktop\malnati 2.1\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources
 C:\Users\Izio\Desktop\malnati 2.1\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
 C:\Users\Izio\Desktop\malnati 2.1\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
+C:\Users\Virna\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources

@@ -21,7 +21,6 @@ using System.Threading;
 using System.Windows.Threading;
 using Ookii.Dialogs.Wpf;
 
-
 namespace clientTCP
 {
     /// <summary>
@@ -251,17 +250,23 @@ namespace clientTCP
                             cmd = client.reciveComand(ns);
                             if (cmd.Equals("+UPLOAD"))
                                 {
+                                  
+                                    int totale = lstFilesFound.Count;
+                                    int i = 0;
                                     foreach (String path in lstFilesFound)
                                     {
-                                        cmd = client.reciveComand(ns);
+                                    pbStatus.Dispatcher.Invoke(() => pbStatus.Value = (i * 100) / totale, DispatcherPriority.Background);
+                                    cmd = client.reciveComand(ns);
                                         if (cmd.Equals("+++FILE"))
                                         {
-                                            dir.Dispatcher.Invoke(new Action(() =>
+                                            /*dir.Dispatcher.Invoke(new Action(() =>
                                             {
                                                 dir.Text += "Invio il File\n";
-                                            }), DispatcherPriority.ContextIdle);
+                                            }), DispatcherPriority.ContextIdle);*/
                                             client.sendFile(path, ns);
+                                            i++;
                                             client.sendCommand("+++++OK", ns);
+                                            
                                         }
                                     }  
                             }
