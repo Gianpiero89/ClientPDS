@@ -27,9 +27,9 @@
         <Label x:Name="label" Content="Choose Folder:" HorizontalAlignment="Left" Margin="22,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.043,-0.403" Width="106" Background="White" FontFamily="Verdana"/>
         <Button x:Name="disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="155,370,0,0" VerticalAlignment="Top" Width="101" Height="26" Click="disconnect_Click" FontFamily="Verdana" FontSize="13"/>
         <Image  x:Name="image" Source="pack://siteoforigin:,,,/Icon/MainIconName.png" HorizontalAlignment="Left" Height="74" Margin="488,10,0,0" VerticalAlignment="Top" Width="166" Tag="asd" RenderTransformOrigin="0.5,0.5"/>
-        <Label Content="File Upload" Margin="299,336,311,32.4" />
+        <Label Content="File Upload" Margin="299,336,288,32.4" />
         <ProgressBar HorizontalAlignment="Left" Height="34" Margin="302,361,0,0" Minimum="0" Maximum="100" Value="0" Name="pbStatus" VerticalAlignment="Top" Width="352"/>
-        <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="465,0,205,26.4" RenderTransformOrigin="0.487,1.38" Height="18" FontSize="10" />
+        <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="466,0,190,22.4" RenderTransformOrigin="0.487,1.38" Height="23" FontSize="10" Width="30" />
     </Grid>
 
 </Window>
