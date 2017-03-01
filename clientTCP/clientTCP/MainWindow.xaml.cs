@@ -179,7 +179,7 @@ namespace clientTCP
                         if (tmp.Equals("++CLOSE"))
                         {
                             myClient.close();
-                            return user;
+                            return username;
                         }
                         else
                         {

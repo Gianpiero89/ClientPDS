@@ -51,7 +51,18 @@ namespace clientTCP
         {
             if (client != null)
             {
-                client.sendCommand("++CLOSE", client.CLIENT.GetStream());    
+                try
+                {
+                    client.sendCommand("++CLOSE", client.CLIENT.GetStream());
+                }
+                catch (Exception e2)
+                {
+                    Console.WriteLine(e2.Message);
+                    _isRunning = false;
+                    MessageBox.Show("Errore di rete, Server offline");
+                    //this.Hide();
+                    this.Close();
+                }
             }
 
             base.OnClosing(e);
@@ -82,7 +93,7 @@ namespace clientTCP
                 // ip e porta del server fissati 
                 tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("1500"));
                 client = new Network.Client(tmp);
-                SetTcpKeepAlive(client.CLIENT.Client, 5000, 1);
+                SetTcpKeepAlive(client.CLIENT.Client, 500, 1);
                 string ccc = client.reciveComand(client.CLIENT.GetStream());
                 if (ccc.Equals("+++OPEN"))
                 { 
@@ -227,8 +238,6 @@ namespace clientTCP
                     {
                         try
                         {
-
-
                             cmd = client.reciveComand(ns);
                             if (cmd.Equals("++CLOSE"))
                             {
@@ -399,10 +408,21 @@ namespace clientTCP
 
         private void disconnect_Click(object sender, RoutedEventArgs e)
         {
-            client.sendCommand("++CLOSE", client.CLIENT.GetStream());
-            this.Close();
-            parent.Activate();
-            parent.Show();
+            try
+            {
+                client.sendCommand("++CLOSE", client.CLIENT.GetStream());
+                this.Close();
+                parent.Activate();
+                parent.Show();
+            }catch(Exception e1)
+            {
+                Console.WriteLine(e1.Message);
+                _isRunning = false;
+                MessageBox.Show("Errore di rete, Server offline");
+                //this.Hide();
+                this.Close();
+            }
+
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
