@@ -43,7 +43,6 @@ namespace clientTCP
         public MainWindow()
         {
             Trayicon.Instance();
-
             InitializeComponent();
         }
 

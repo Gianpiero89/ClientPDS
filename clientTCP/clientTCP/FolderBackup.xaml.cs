@@ -20,6 +20,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Threading;
 using Ookii.Dialogs.Wpf;
+using System.Collections.Concurrent;
+using System.Runtime.InteropServices;
 
 namespace clientTCP
 {
@@ -43,7 +45,6 @@ namespace clientTCP
         private String xml;
         private List<Utils.CheckBackup> backupList;
         FileSystemWatcher watcher;
-
 
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
@@ -76,10 +77,12 @@ namespace clientTCP
                 // ip e porta del server fissati 
 
                 TcpClient tmp = new TcpClient();
+                //TcpClient control = new TcpClient();
                 _isRunning = true;
                 // ip e porta del server fissati 
                 tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("1500"));
                 client = new Network.Client(tmp);
+                SetTcpKeepAlive(client.CLIENT.Client, 5000, 1);
                 string ccc = client.reciveComand(client.CLIENT.GetStream());
                 if (ccc.Equals("+++OPEN"))
                 { 
@@ -103,7 +106,8 @@ namespace clientTCP
                         dir.Text += "Client connected to server!\n";
                     }), DispatcherPriority.ContextIdle);
                     clientRecive();
-               }
+                  
+                }
 
             }
             catch (SocketException e1)
@@ -126,25 +130,33 @@ namespace clientTCP
                 this.client = null;
                 return;
 
-            } 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Connessione col server persa!");
+                return;
+            }
 
         }
 
         public void DirSearch(String path)
         {
-
             try
-
             {
+                //MessageBox.Show("Sono qui");
                 foreach (string f in Directory.GetFiles(path, "*"))
                 {
+                    //MessageBox.Show(relativePath + " : " + f.LastIndexOf(relativePath).ToString() + "  last \\" + f.LastIndexOf(@"\").ToString());
                     lstFilesFound.Add(f);
-                    int resto = f.LastIndexOf(@"\") - f.LastIndexOf(relativePath);
+                    int resto = Math.Abs(f.LastIndexOf(@"\") - f.LastIndexOf(relativePath));
+                    
                     String tmp = f.Substring(f.LastIndexOf(relativePath) - 1, resto + 1);
+                    
                     info.Add(new Utils.FileInfomation(tmp, f.Substring(f.LastIndexOf(@"\") + 1)));
                 }
                 foreach (string d in Directory.GetDirectories(path))
                 {
+                    //MessageBox.Show(d);
                     DirSearch(d);
                 }
             }
@@ -168,11 +180,13 @@ namespace clientTCP
             {
                 absolutePath = dlg.SelectedPath;
                 relativePath = absolutePath.Substring(absolutePath.LastIndexOf(@"\") + 1);
+                //MessageBox.Show(relativePath);
                 Choose_Folder.Content = absolutePath;
                 this.lstFilesFound.Clear();
                 this.info.Clear();
                 this.files.Clear();
 
+                //MessageBox.Show(absolutePath);
                 DirSearch(absolutePath);
                 classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
                 xml = classes.Function.DictToXml(this.files, relativePath);
@@ -198,6 +212,8 @@ namespace clientTCP
                 client.sendCommand(text, client.CLIENT.GetStream());
         }
 
+
+
         private void clientRecive()
         {
             if (client.isConnected())
@@ -207,56 +223,61 @@ namespace clientTCP
                     string cmd;
                     NetworkStream ns = client.CLIENT.GetStream();
                     // Send the message to the connected TcpServer.
-                    while (_isRunning)
+                    while (_isRunning )
                     {
-                        cmd = client.reciveComand(ns);
-                        if (cmd.Equals("++CLOSE"))
+                        try
                         {
-                            client.close();
-                            _isRunning = false;
-                            return;
-                        }
-                            if (cmd.Equals("+++LIST"))
-                        {
-                            int dim = client.reciveDimension(ns);
-                            Console.WriteLine(dim);
-                            clientSend("+++++OK");
-                            String version = client.reciveVersion(dim, ns);
-                            Console.WriteLine(version);
-                            String[] list = version.Split(';');
-                            for (int i = 0; i < list.Length - 1; i++)
-                            {
-                                String[] backup = list[i].Split('%');
-                                backupList.Add(new Utils.CheckBackup(backup[0], backup[1], backup[2]));
-                            }
-
-                            box.Dispatcher.Invoke(new Action(() =>
-                            {
-                                box.ItemsSource = backupList;
-                            }), DispatcherPriority.ContextIdle);
-                            cmd = "";
 
 
-                        }
-                        dir.Dispatcher.Invoke(new Action(() =>
-                        {
-                            dir.Text += "Wait to command\n";
-                        }), DispatcherPriority.ContextIdle);
-                        
-                        if (cmd.Equals("+BACKUP"))
-                        {
-                            client.sendFileDimension(xml.Length, ns);
-                            client.sendData(xml, ns);
                             cmd = client.reciveComand(ns);
-                            if (cmd.Equals("+UPLOAD"))
+                            if (cmd.Equals("++CLOSE"))
+                            {
+                                client.close();
+                                _isRunning = false;
+                                return;
+                            }
+                            if (cmd.Equals("+++LIST"))
+                            {
+                                int dim = client.reciveDimension(ns);
+                                Console.WriteLine(dim);
+                                clientSend("+++++OK");
+                                String version = client.reciveVersion(dim, ns);
+                                Console.WriteLine(version);
+                                String[] list = version.Split(';');
+                                backupList = new List<Utils.CheckBackup>();
+                                for (int i = 0; i < list.Length - 1; i++)
                                 {
-                                  
+                                    String[] backup = list[i].Split('%');
+                                    backupList.Add(new Utils.CheckBackup(backup[0], backup[1], backup[2]));
+                                }
+
+                                box.Dispatcher.Invoke(new Action(() =>
+                                {
+                                    box.ItemsSource = backupList;
+                                }), DispatcherPriority.ContextIdle);
+                                cmd = "";
+
+
+                            }
+                            dir.Dispatcher.Invoke(new Action(() =>
+                            {
+                                dir.Text += "Wait to command\n";
+                            }), DispatcherPriority.ContextIdle);
+
+                            if (cmd.Equals("+BACKUP"))
+                            {
+                                client.sendFileDimension(xml.Length, ns);
+                                client.sendData(xml, ns);
+                                cmd = client.reciveComand(ns);
+                                if (cmd.Equals("+UPLOAD"))
+                                {
+
                                     int totale = lstFilesFound.Count;
                                     int i = 0;
                                     foreach (String path in lstFilesFound)
                                     {
-                                    pbStatus.Dispatcher.Invoke(() => pbStatus.Value = (i * 100) / totale, DispatcherPriority.Background);
-                                    cmd = client.reciveComand(ns);
+                                        pbStatus.Dispatcher.Invoke(() => pbStatus.Value = (i * 100) / totale, DispatcherPriority.Background);
+                                        cmd = client.reciveComand(ns);
                                         if (cmd.Equals("+++FILE"))
                                         {
                                             /*dir.Dispatcher.Invoke(new Action(() =>
@@ -266,73 +287,78 @@ namespace clientTCP
                                             client.sendFile(path, ns);
                                             i++;
                                             client.sendCommand("+++++OK", ns);
-                                            
+
                                         }
-                                    }  
-                            }
-                            clientSend("+++LIST");
-                            cmd = "";
-                        }
-
-                    if (cmd.Equals("RESTORE"))
-                    {
-                            dir.Dispatcher.Invoke(new Action(() =>
-                            {
-                                dir.Text += "Restoring\n";
-                            }), DispatcherPriority.ContextIdle);
-
-                            foreach (Utils.CheckBackup cb in backupList)
-                            {
-                                if (cb.CHECK)
-                                {
-                                    string toRestore = cb.NAME + @"\" + cb.VERSION;
-                                    MessageBox.Show(toRestore);
-
-                                    if (!Directory.Exists(backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION))
-                                    {
-                                        Directory.CreateDirectory(backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION);
                                     }
-                                    client.sendFileDimension(toRestore.Length, client.CLIENT.GetStream());
-                                    string mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                    Console.WriteLine(mycmd);
-                                    if (mycmd.Equals("+++++OK"))
+                                }
+                                clientSend("+++LIST");
+                                cmd = "";
+                            }
+
+                            if (cmd.Equals("RESTORE"))
+                            {
+                                dir.Dispatcher.Invoke(new Action(() =>
+                                {
+                                    dir.Text += "Restoring\n";
+                                }), DispatcherPriority.ContextIdle);
+
+                                foreach (Utils.CheckBackup cb in backupList)
+                                {
+                                    if (cb.CHECK)
                                     {
-                                        client.sendData(toRestore, client.CLIENT.GetStream());
-                                        mycmd = client.reciveComand(client.CLIENT.GetStream());
+                                        string toRestore = cb.NAME + @"\" + cb.VERSION;
+                                        MessageBox.Show(toRestore);
+
+                                        if (!Directory.Exists(backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION))
+                                        {
+                                            Directory.CreateDirectory(backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION);
+                                        }
+                                        client.sendFileDimension(toRestore.Length, client.CLIENT.GetStream());
+                                        string mycmd = client.reciveComand(client.CLIENT.GetStream());
                                         Console.WriteLine(mycmd);
                                         if (mycmd.Equals("+++++OK"))
                                         {
-                                            while(true)
+                                            client.sendData(toRestore, client.CLIENT.GetStream());
+                                            mycmd = client.reciveComand(client.CLIENT.GetStream());
+                                            Console.WriteLine(mycmd);
+                                            if (mycmd.Equals("+++++OK"))
                                             {
-                                                mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                                if (mycmd.Equals("++++END")) break;
+                                                while (true)
+                                                {
+                                                    mycmd = client.reciveComand(client.CLIENT.GetStream());
+                                                    if (mycmd.Equals("++++END")) break;
 
-                                                if (mycmd.Equals("+++FILE") || mycmd.Equals("+++NEXT"))
-                                                { 
-                                                    
-                                                    int dim = client.reciveDimension(client.CLIENT.GetStream());
-                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                    string relative = client.reciveVersion(dim, client.CLIENT.GetStream());
-                                                    Console.WriteLine("path : " + relative);
-                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                    dim = client.reciveDimension(client.CLIENT.GetStream());
-                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                    string name = client.reciveVersion(dim, client.CLIENT.GetStream());
-                                                    Console.WriteLine("fileName : " + name);
-                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                    dim = client.reciveDimension(client.CLIENT.GetStream());
-                                                    client.sendCommand("+++++OK", client.CLIENT.GetStream());
-                                                    client.ReciveFile(Directory.GetCurrentDirectory() + @"\" + backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION + @"\", relative, name, dim, client.CLIENT.GetStream());
-                                                    Console.WriteLine("finish\n");
-                                                    clientSend("+++++OK");
-                                                    
+                                                    if (mycmd.Equals("+++FILE") || mycmd.Equals("+++NEXT"))
+                                                    {
+
+                                                        int dim = client.reciveDimension(client.CLIENT.GetStream());
+                                                        client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                        string relative = client.reciveVersion(dim, client.CLIENT.GetStream());
+                                                        Console.WriteLine("path : " + relative);
+                                                        client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                        dim = client.reciveDimension(client.CLIENT.GetStream());
+                                                        client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                        string name = client.reciveVersion(dim, client.CLIENT.GetStream());
+                                                        Console.WriteLine("fileName : " + name);
+                                                        client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                        dim = client.reciveDimension(client.CLIENT.GetStream());
+                                                        client.sendCommand("+++++OK", client.CLIENT.GetStream());
+                                                        client.ReciveFile(Directory.GetCurrentDirectory() + @"\" + backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION + @"\", relative, name, dim, client.CLIENT.GetStream());
+                                                        Console.WriteLine("finish\n");
+                                                        clientSend("+++++OK");
+
+                                                    }
                                                 }
-                                            } 
+                                            }
                                         }
                                     }
                                 }
                             }
-                     }
+                        } catch (Exception e)
+                        {
+                            MessageBox.Show("Connessione persa!");
+                            return;
+                        }
                 }
              return;
             }).Start();
@@ -385,6 +411,28 @@ namespace clientTCP
             var item = cb.DataContext;
             box.SelectedItem = item;
         }
+
+        public static void SetTcpKeepAlive(Socket socket, uint keepaliveTime, uint keepaliveInterval)
+        {
+            /* the native structure
+          struct tcp_keepalive {
+           ULONG onoff;
+          ULONG keepalivetime;
+           ULONG keepaliveinterval;
+          };
+          */
+
+            // marshal the equivalent of the native structure into a byte array
+            uint dummy = 0;
+            byte[] inOptionValues = new byte[Marshal.SizeOf(dummy) * 3];
+            BitConverter.GetBytes((uint)(keepaliveTime)).CopyTo(inOptionValues, 0);
+            BitConverter.GetBytes((uint)keepaliveTime).CopyTo(inOptionValues, Marshal.SizeOf(dummy));
+            BitConverter.GetBytes((uint)keepaliveInterval).CopyTo(inOptionValues, Marshal.SizeOf(dummy) * 2);
+
+            // write SIO_VALS to Socket IOControl
+            socket.IOControl(IOControlCode.KeepAliveValues, inOptionValues, null);
+        }
+
 
     }
 }

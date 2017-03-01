@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace clientTCP.Network
 {
@@ -34,148 +36,218 @@ namespace clientTCP.Network
 
         public void sendCommand(string command, NetworkStream ns)
         {
-            Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
-            ns.Write(data, 0, data.Length);
-            ns.Flush();
+            try
+            {
+                Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
+                ns.Write(data, 0, data.Length);
+                ns.Flush();
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return;
+            }
         }
 
         public void sendFileDimension(int dim, NetworkStream ns)
         {
-            byte[] buf = BitConverter.GetBytes(dim);
-            ns.Write(buf, 0, buf.Length);
-            ns.Flush();
+            try
+            {
+                byte[] buf = BitConverter.GetBytes(dim);
+                ns.Write(buf, 0, buf.Length);
+                ns.Flush();
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return;
+            }
 
         }
 
         public void sendFile(String path, NetworkStream ns)
         {
-            Byte[] data = File.ReadAllBytes(@path);
-            ns.Write(data, 0, data.Length);
-            ns.Flush();
+            try
+            {
+                Byte[] data = File.ReadAllBytes(@path);
+                ns.Write(data, 0, data.Length);
+                ns.Flush();
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return;
+            }
 
         }
 
 
         public void sendData(string file, NetworkStream ns)
         {
-
-            Byte[] data = System.Text.Encoding.ASCII.GetBytes(file);
-            ns.Write(data, 0, data.Length);
-            ns.Flush();
+            try
+            {
+                Byte[] data = System.Text.Encoding.ASCII.GetBytes(file);
+                ns.Write(data, 0, data.Length);
+                ns.Flush();
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return;
+            }
 
         }
 
         public string reciveComand(NetworkStream ns)
         {
-            Byte[] data = new Byte[7];
-            String s;
-            ns.Read(data, 0, 7);
-            ns.Flush();
-            return s = System.Text.Encoding.ASCII.GetString(data);
+            try
+            {
+                Byte[] data = new Byte[7];
+                String s;
+                ns.Read(data, 0, 7);
+                ns.Flush();
+                return s = System.Text.Encoding.ASCII.GetString(data);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
         }
 
         public int reciveDimension(NetworkStream ns)
         {
-            byte[] buf = new byte[client.ReceiveBufferSize];  
-            int len = ns.Read(buf, 0, client.ReceiveBufferSize);
-            ns.Flush();
-            return BitConverter.ToInt32(buf, 0);
+            try
+            {
+                byte[] buf = new byte[client.ReceiveBufferSize];
+                int len = ns.Read(buf, 0, client.ReceiveBufferSize);
+                ns.Flush();
+                return BitConverter.ToInt32(buf, 0);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return -1;
+            }
         }
 
         public String reciveVersion(int dim, NetworkStream ns)
         {
-            Byte[] bytes = new Byte[dim];
+            try
+            {
+                Byte[] bytes = new Byte[dim];
+                ns.Read(bytes, 0, dim);
+                return System.Text.Encoding.ASCII.GetString(bytes, 0, dim);
 
-            ns.Read(bytes, 0, dim);
-            return System.Text.Encoding.ASCII.GetString(bytes, 0, dim);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            
         }
 
 
         public String ReciveXMLData(int dim, NetworkStream ns)
         {
-
-            // Buffer for reading data
-            Byte[] bytes = new Byte[1024];
-            int lenght = 1024;
-            //StringBuilder sb = new StringBuilder();
-            int i;
-            Int32 numberOfTotalBytes = dim;
-            Int32 byteRecivied = 0;
-            String xml = "";
-
-
-            if (dim < lenght)
+            try
             {
-                ns.Read(bytes, 0, dim);
-                return System.Text.Encoding.ASCII.GetString(bytes, 0, dim);
-            }
-            else
-            {
-                while ((i = ns.Read(bytes, 0, lenght)) != 0)
+                // Buffer for reading data
+                Byte[] bytes = new Byte[1024];
+                int lenght = 1024;
+                //StringBuilder sb = new StringBuilder();
+                int i;
+                Int32 numberOfTotalBytes = dim;
+                Int32 byteRecivied = 0;
+                String xml = "";
+
+
+                if (dim < lenght)
                 {
-                    xml += System.Text.Encoding.ASCII.GetString(bytes, 0, lenght);
-                    byteRecivied += lenght;
-                    if (numberOfTotalBytes - byteRecivied < lenght)
+                    ns.Read(bytes, 0, dim);
+                    return System.Text.Encoding.ASCII.GetString(bytes, 0, dim);
+                }
+                else
+                {
+                    while ((i = ns.Read(bytes, 0, lenght)) != 0)
                     {
-                        lenght = numberOfTotalBytes - byteRecivied;
-                        ns.Read(bytes, 0, lenght);
                         xml += System.Text.Encoding.ASCII.GetString(bytes, 0, lenght);
-                        return xml;
-                        
+                        byteRecivied += lenght;
+                        if (numberOfTotalBytes - byteRecivied < lenght)
+                        {
+                            lenght = numberOfTotalBytes - byteRecivied;
+                            ns.Read(bytes, 0, lenght);
+                            xml += System.Text.Encoding.ASCII.GetString(bytes, 0, lenght);
+                            return xml;
+
+                        }
+
                     }
 
                 }
-                
-            }
 
-            return "";
+                return "";
+            }
+             catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
         }
 
         public void ReciveFile(String path, String relative, String name, int dim, NetworkStream ns)
         {
-
-            // Buffer for reading data
-            Byte[] bytes = new Byte[1024];
-            int lenght = 1024;
-            int i;
-            Int32 numberOfTotalBytes = dim;
-            Int32 byteRecivied = 0;
-
-            if (!Directory.Exists(path + relative + @"\"))
+            try
             {
-                Directory.CreateDirectory(path + relative + @"\");
-            }
+                // Buffer for reading data
+                Byte[] bytes = new Byte[1024];
+                int lenght = 1024;
+                int i;
+                Int32 numberOfTotalBytes = dim;
+                Int32 byteRecivied = 0;
+
+                if (!Directory.Exists(path + relative + @"\"))
+                {
+                    Directory.CreateDirectory(path + relative + @"\");
+                }
 
 
-            FileStream fs = new FileStream(path + relative + @"\" + name, FileMode.OpenOrCreate);
+                FileStream fs = new FileStream(path + relative + @"\" + name, FileMode.OpenOrCreate);
 
 
-            if (dim < lenght)
-            {
-                ns.Read(bytes, 0, dim);
-                fs.Write(bytes, 0, dim);
-                fs.Close();
+                if (dim < lenght)
+                {
+                    ns.Read(bytes, 0, dim);
+                    fs.Write(bytes, 0, dim);
+                    fs.Close();
+                    return;
+                }
+                else
+                {
+                    while ((i = ns.Read(bytes, 0, lenght)) != 0)
+                    {
+                        fs.Write(bytes, 0, lenght);
+                        byteRecivied += lenght;
+                        if (numberOfTotalBytes - byteRecivied < lenght)
+                        {
+                            lenght = numberOfTotalBytes - byteRecivied;
+                            ns.Read(bytes, 0, lenght);
+                            fs.Write(bytes, 0, lenght);
+                            break;
+                        }
+
+                    }
+                    fs.Close();
+                }
+
                 return;
             }
-            else
+            catch (Exception e)
             {
-                while ((i = ns.Read(bytes, 0, lenght)) != 0)
-                {
-                    fs.Write(bytes, 0, lenght);
-                    byteRecivied += lenght;
-                    if (numberOfTotalBytes - byteRecivied < lenght)
-                    {
-                        lenght = numberOfTotalBytes - byteRecivied;
-                        ns.Read(bytes, 0, lenght);
-                        fs.Write(bytes, 0, lenght);
-                        break;
-                    }
-
-                }
-                fs.Close();
+                Debug.Print(e.Message);
+                return;
             }
-
-            return;
         }
 
 
@@ -191,6 +263,8 @@ namespace clientTCP.Network
                 this.client = value;
             }
         }
-        
+
+    
+
     }
 }
