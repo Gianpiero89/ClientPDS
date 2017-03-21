@@ -61,7 +61,7 @@ namespace clientTCP
                     _isRunning = false;
                     MessageBox.Show("Errore di rete, Server offline");
                     //this.Hide();
-                    this.Close();
+                    this.Hide();
                 }
             }
 
@@ -287,16 +287,18 @@ namespace clientTCP
                                             client.sendData("+++++OK", ns);
                                             int totale = lstFilesFound.Count;
                                             int i = 0;
+                                            MessageBox.Show("Totale : " + totale);
                                             foreach (String path in lstFilesFound)
                                             {
-                                                pbStatus.Dispatcher.Invoke(() => pbStatus.Value = (i * 100) / totale, DispatcherPriority.Background);
+                                                pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (i * 100) / totale; count.Text = (i * 100) / totale + "%"; }, DispatcherPriority.Background);
                                                 cmd = client.reciveComand(ns);
                                                 if (cmd.Equals("+++FILE"))
                                                 {
-                                                    /*dir.Dispatcher.Invoke(new Action(() =>
+                                                    dir.Dispatcher.Invoke(new Action(() =>
                                                     {
-                                                        dir.Text += "Invio il File\n";
-                                                    }), DispatcherPriority.ContextIdle);*/
+                                                        dir.Text += "Invio il File " + i + "\n";
+                                                    }), DispatcherPriority.ContextIdle);
+                                                    
                                                     client.sendFile(path, ns);
                                                     i++;
                                                     if (client.reciveComand(ns) == "+++++OK")
@@ -443,28 +445,6 @@ namespace clientTCP
             var item = cb.DataContext;
             box.SelectedItem = item;
         }
-
-        public static void SetTcpKeepAlive(Socket socket, uint keepaliveTime, uint keepaliveInterval)
-        {
-            /* the native structure
-          struct tcp_keepalive {
-           ULONG onoff;
-          ULONG keepalivetime;
-           ULONG keepaliveinterval;
-          };
-          */
-
-            // marshal the equivalent of the native structure into a byte array
-            uint dummy = 0;
-            byte[] inOptionValues = new byte[Marshal.SizeOf(dummy) * 3];
-            BitConverter.GetBytes((uint)(keepaliveTime)).CopyTo(inOptionValues, 0);
-            BitConverter.GetBytes((uint)keepaliveTime).CopyTo(inOptionValues, Marshal.SizeOf(dummy));
-            BitConverter.GetBytes((uint)keepaliveInterval).CopyTo(inOptionValues, Marshal.SizeOf(dummy) * 2);
-
-            // write SIO_VALS to Socket IOControl
-            socket.IOControl(IOControlCode.KeepAliveValues, inOptionValues, null);
-        }
-
 
     }
 }

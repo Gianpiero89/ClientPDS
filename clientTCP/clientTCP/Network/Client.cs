@@ -8,6 +8,7 @@ using System.Net;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Windows;
 
 namespace clientTCP.Network
 {
@@ -74,6 +75,7 @@ namespace clientTCP.Network
         {
             try
             {
+                
                 Byte[] data = File.ReadAllBytes(@path);
                 ns.Write(data, 0, data.Length);
                 ns.Flush();
@@ -232,13 +234,14 @@ namespace clientTCP.Network
                     {
                         fs.Write(bytes, 0, lenght);
                         byteRecivied += lenght;
-                        if (numberOfTotalBytes - byteRecivied < lenght)
+                        if (numberOfTotalBytes - byteRecivied < lenght && numberOfTotalBytes - byteRecivied > 0)
                         {
                             lenght = numberOfTotalBytes - byteRecivied;
                             ns.Read(bytes, 0, lenght);
                             fs.Write(bytes, 0, lenght);
                             break;
                         }
+                        if (numberOfTotalBytes - byteRecivied == 0) break;
 
                     }
                     fs.Close();
