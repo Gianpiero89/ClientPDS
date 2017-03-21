@@ -91,9 +91,8 @@ namespace clientTCP
                 //TcpClient control = new TcpClient();
                 _isRunning = true;
                 // ip e porta del server fissati 
-                tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("1500"));
+                tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("3000"));
                 client = new Network.Client(tmp);
-                SetTcpKeepAlive(client.CLIENT.Client, 500, 1);
                 string ccc = client.reciveComand(client.CLIENT.GetStream());
                 if (ccc.Equals("+++OPEN"))
                 { 
@@ -276,32 +275,45 @@ namespace clientTCP
                             if (cmd.Equals("+BACKUP"))
                             {
                                 client.sendFileDimension(xml.Length, ns);
-                                client.sendData(xml, ns);
                                 cmd = client.reciveComand(ns);
-                                if (cmd.Equals("+UPLOAD"))
+                                if (cmd.Equals("+++++OK"))
                                 {
-
-                                    int totale = lstFilesFound.Count;
-                                    int i = 0;
-                                    foreach (String path in lstFilesFound)
+                                    client.sendData(xml, ns);
+                                    cmd = client.reciveComand(ns);
+                                    if (cmd.Equals("+UPLOAD"))
                                     {
-                                        pbStatus.Dispatcher.Invoke(() => pbStatus.Value = (i * 100) / totale, DispatcherPriority.Background);
-                                        cmd = client.reciveComand(ns);
-                                        if (cmd.Equals("+++FILE"))
+                                        try
                                         {
-                                            /*dir.Dispatcher.Invoke(new Action(() =>
+                                            client.sendData("+++++OK", ns);
+                                            int totale = lstFilesFound.Count;
+                                            int i = 0;
+                                            foreach (String path in lstFilesFound)
                                             {
-                                                dir.Text += "Invio il File\n";
-                                            }), DispatcherPriority.ContextIdle);*/
-                                            client.sendFile(path, ns);
-                                            i++;
-                                            client.sendCommand("+++++OK", ns);
+                                                pbStatus.Dispatcher.Invoke(() => pbStatus.Value = (i * 100) / totale, DispatcherPriority.Background);
+                                                cmd = client.reciveComand(ns);
+                                                if (cmd.Equals("+++FILE"))
+                                                {
+                                                    /*dir.Dispatcher.Invoke(new Action(() =>
+                                                    {
+                                                        dir.Text += "Invio il File\n";
+                                                    }), DispatcherPriority.ContextIdle);*/
+                                                    client.sendFile(path, ns);
+                                                    i++;
+                                                    if (client.reciveComand(ns) == "+++++OK")
+                                                        client.sendCommand("+++++OK", ns);
 
+                                                }
+                                            }
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            MessageBox.Show("Connesione Persa!");
+                                            return;
                                         }
                                     }
+                                    clientSend("+++LIST");
+                                    cmd = "";
                                 }
-                                clientSend("+++LIST");
-                                cmd = "";
                             }
 
                             if (cmd.Equals("RESTORE"))

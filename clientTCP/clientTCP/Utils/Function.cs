@@ -15,7 +15,6 @@ namespace clientTCP.classes
     {
         public static void createXmlToSend(List<String> lstFilesFound, List<Utils.FileInfomation> list, Dictionary<String, Utils.FileInfomation> files)
         {
-            MessageBox.Show("Lista path relativi : " + list.Count + "\nLista path assoluti : " + lstFilesFound.Count);
             int i = 0;
             foreach(String path in lstFilesFound)
             {

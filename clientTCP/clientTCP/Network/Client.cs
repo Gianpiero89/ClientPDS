@@ -41,11 +41,16 @@ namespace clientTCP.Network
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
                 ns.Write(data, 0, data.Length);
                 ns.Flush();
+               
+            }
+            catch( IOException ioe)
+            {
+                throw ioe;
             }
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return;
+                throw e;
             }
         }
 
@@ -60,7 +65,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return;
+                throw e;
             }
 
         }
@@ -76,7 +81,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return;
+                throw e;
             }
 
         }
@@ -93,7 +98,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return;
+                throw e;
             }
 
         }
@@ -111,7 +116,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return null;
+                throw e;
             }
         }
 
@@ -127,7 +132,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                throw e;
             }
         }
 
@@ -143,7 +148,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return null;
+                throw e;
             }
             
         }
@@ -192,7 +197,7 @@ namespace clientTCP.Network
              catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return null;
+                throw e;
             }
         }
 
@@ -212,9 +217,7 @@ namespace clientTCP.Network
                     Directory.CreateDirectory(path + relative + @"\");
                 }
 
-
                 FileStream fs = new FileStream(path + relative + @"\" + name, FileMode.OpenOrCreate);
-
 
                 if (dim < lenght)
                 {
@@ -246,7 +249,7 @@ namespace clientTCP.Network
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return;
+                throw e;
             }
         }
 
