@@ -306,6 +306,7 @@ namespace clientTCP
 
                                                 }
                                             }
+                                            pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (totale * 100) / totale; count.Text = (totale * 100) / totale + "%"; }, DispatcherPriority.Background);
                                         }
                                         catch (Exception e)
                                         {
