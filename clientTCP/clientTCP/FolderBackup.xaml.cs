@@ -91,7 +91,8 @@ namespace clientTCP
                 //TcpClient control = new TcpClient();
                 _isRunning = true;
                 // ip e porta del server fissati 
-                tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("3000"));
+                tmp.Connect(classes.Function.checkIPAddress("192.168.43.143"), Int16.Parse("3000"));
+                //tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("3000"));
                 client = new Network.Client(tmp);
                 string ccc = client.reciveComand(client.CLIENT.GetStream());
                 if (ccc.Equals("+++OPEN"))
@@ -200,6 +201,7 @@ namespace clientTCP
                 DirSearch(absolutePath);
                 classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
                 xml = classes.Function.DictToXml(this.files, relativePath);
+                MessageBox.Show(xml);
                 Thread thread = new Thread(new ThreadStart(watch));
                 thread.IsBackground = true;
                 thread.Start();
@@ -274,20 +276,32 @@ namespace clientTCP
 
                             if (cmd.Equals("+BACKUP"))
                             {
+                                dir.Dispatcher.Invoke(new Action(() =>
+                                {
+                                    dir.Text += "Sono nel backup\n";
+                                }), DispatcherPriority.ContextIdle);
                                 client.sendFileDimension(xml.Length, ns);
+                                MessageBox.Show(""+xml.Length);
                                 cmd = client.reciveComand(ns);
                                 if (cmd.Equals("+++++OK"))
                                 {
+                                    dir.Dispatcher.Invoke(new Action(() =>
+                                    {
+                                        dir.Text += "Ok \n";
+                                    }), DispatcherPriority.ContextIdle);
                                     client.sendData(xml, ns);
                                     cmd = client.reciveComand(ns);
                                     if (cmd.Equals("+UPLOAD"))
                                     {
                                         try
                                         {
+                                            dir.Dispatcher.Invoke(new Action(() =>
+                                            {
+                                                dir.Text += "Inizio l'upload\n";
+                                            }), DispatcherPriority.ContextIdle);
                                             client.sendData("+++++OK", ns);
                                             int totale = lstFilesFound.Count;
-                                            int i = 0;
-                                            MessageBox.Show("Totale : " + totale);
+                                            int i = 0;      
                                             foreach (String path in lstFilesFound)
                                             {
                                                 pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (i * 100) / totale; count.Text = (i * 100) / totale + "%"; }, DispatcherPriority.Background);

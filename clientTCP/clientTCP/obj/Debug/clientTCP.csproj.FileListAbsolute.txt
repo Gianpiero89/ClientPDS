@@ -193,13 +193,10 @@ C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\clientTC
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
-C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.dll
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.xml
-C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\MainWindow.baml
@@ -214,3 +211,4 @@ C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTC
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.exe
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache

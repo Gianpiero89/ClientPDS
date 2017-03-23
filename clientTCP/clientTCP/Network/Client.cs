@@ -59,8 +59,9 @@ namespace clientTCP.Network
         {
             try
             {
-                byte[] buf = BitConverter.GetBytes(dim);
-                ns.Write(buf, 0, buf.Length);
+                byte[] buf = new byte[15];
+                BitConverter.GetBytes(dim).CopyTo(buf, 0);
+                ns.Write(buf, 0, 15);
                 ns.Flush();
             }
             catch (Exception e)
@@ -126,8 +127,8 @@ namespace clientTCP.Network
         {
             try
             {
-                byte[] buf = new byte[client.ReceiveBufferSize];
-                int len = ns.Read(buf, 0, client.ReceiveBufferSize);
+                byte[] buf = new byte[15];
+                int len = ns.Read(buf, 0, 15);
                 ns.Flush();
                 return BitConverter.ToInt32(buf, 0);
             }
@@ -161,8 +162,8 @@ namespace clientTCP.Network
             try
             {
                 // Buffer for reading data
-                Byte[] bytes = new Byte[1024];
-                int lenght = 1024;
+                Byte[] bytes = new Byte[1];
+                int lenght = 1;
                 //StringBuilder sb = new StringBuilder();
                 int i;
                 Int32 numberOfTotalBytes = dim;
@@ -208,8 +209,8 @@ namespace clientTCP.Network
             try
             {
                 // Buffer for reading data
-                Byte[] bytes = new Byte[1024];
-                int lenght = 1024;
+                Byte[] bytes = new Byte[1];
+                int lenght = 1;
                 int i;
                 Int32 numberOfTotalBytes = dim;
                 Int32 byteRecivied = 0;
