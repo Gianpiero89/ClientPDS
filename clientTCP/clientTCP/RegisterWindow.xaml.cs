@@ -66,7 +66,7 @@ namespace clientTCP
 
             TcpClient tmp = new TcpClient();
             // ip e porta del server fissati 
-            tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("1500"));
+            tmp.Connect(classes.Function.checkIPAddress("172.29.146.235"), Int16.Parse("3000"));
             client = new Network.Client(tmp);
             string ccc = client.reciveComand(client.CLIENT.GetStream());
 

@@ -45,6 +45,7 @@ namespace clientTCP
         private String xml;
         private List<Utils.CheckBackup> backupList;
         FileSystemWatcher watcher;
+        private volatile Boolean Shutdown = false;
 
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
@@ -54,12 +55,13 @@ namespace clientTCP
                 try
                 {
                     client.sendCommand("++CLOSE", client.CLIENT.GetStream());
+                    _isRunning = false;
                 }
                 catch (Exception e2)
                 {
                     Console.WriteLine(e2.Message);
                     _isRunning = false;
-                    MessageBox.Show("Errore di rete, Server offline");
+                   // MessageBox.Show("Errore di rete, Server offline");
                     //this.Hide();
                     this.Hide();
                 }
@@ -67,6 +69,7 @@ namespace clientTCP
 
             base.OnClosing(e);
         }
+
 
         public FolderBackup(string cnt)
         {
@@ -91,12 +94,15 @@ namespace clientTCP
                 //TcpClient control = new TcpClient();
                 _isRunning = true;
                 // ip e porta del server fissati 
-                tmp.Connect(classes.Function.checkIPAddress("192.168.43.143"), Int16.Parse("3000"));
+                tmp.Connect(classes.Function.checkIPAddress("192.168.137.111"), Int16.Parse("3000"));
                 //tmp.Connect(classes.Function.checkIPAddress("127.0.0.1"), Int16.Parse("3000"));
                 client = new Network.Client(tmp);
+            
                 string ccc = client.reciveComand(client.CLIENT.GetStream());
                 if (ccc.Equals("+++OPEN"))
-                { 
+                {
+                    Thread th = new Thread(CheckCon);
+                    th.Start(client.CLIENT);
                     clientSend("+++AUTH");
                     string cmd = client.reciveComand(client.CLIENT.GetStream());
                     Console.WriteLine(cmd);
@@ -112,12 +118,16 @@ namespace clientTCP
                     }
                     
                     clientSend(String.Format("+++LIST"));
+
                     dir.Dispatcher.Invoke(new Action(() =>
                     {
                         dir.Text += "Client connected to server!\n";
                     }), DispatcherPriority.ContextIdle);
+                 
                     clientRecive();
+
                   
+
                 }
 
             }
@@ -148,6 +158,18 @@ namespace clientTCP
                 return;
             }
 
+        }
+
+
+        private void CheckCon(object o)
+        {
+            TcpClient c = (TcpClient)o;
+            MessageBox.Show("partito!");
+            while (c.Connected);
+            MessageBox.Show("Errore di rete, Server offline!");
+            Shutdown = true;
+
+         
         }
 
         public void DirSearch(String path)
@@ -183,38 +205,54 @@ namespace clientTCP
         private void backup_Click(object sender, RoutedEventArgs e)
         {
 
-
-            VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog();
-            dlg.ShowNewFolderButton = true;
-
-            if (dlg.ShowDialog() == true)
+            try
             {
-                absolutePath = dlg.SelectedPath;
-                relativePath = absolutePath.Substring(absolutePath.LastIndexOf(@"\") + 1);
-                //MessageBox.Show(relativePath);
-                Choose_Folder.Content = absolutePath;
-                this.lstFilesFound.Clear();
-                this.info.Clear();
-                this.files.Clear();
+                VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog();
+                dlg.ShowNewFolderButton = true;
+                if (dlg.ShowDialog() == true)
+                {
+                    absolutePath = dlg.SelectedPath;
+                    relativePath = absolutePath.Substring(absolutePath.LastIndexOf(@"\") + 1);
+                    //MessageBox.Show(relativePath);
+                    Choose_Folder.Content = absolutePath;
+                    this.lstFilesFound.Clear();
+                    this.info.Clear();
+                    this.files.Clear();
 
-                //MessageBox.Show(absolutePath);
-                DirSearch(absolutePath);
-                classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
-                xml = classes.Function.DictToXml(this.files, relativePath);
-                MessageBox.Show(xml);
-                Thread thread = new Thread(new ThreadStart(watch));
-                thread.IsBackground = true;
-                thread.Start();
-                clientSend("+BACKUP");
-                
+                    //MessageBox.Show(absolutePath);
+                    DirSearch(absolutePath);
+                    classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
+                    xml = classes.Function.DictToXml(this.files, relativePath);
+                    // MessageBox.Show(xml);
+                    Thread thread = new Thread(new ThreadStart(watch));
+                    thread.IsBackground = true;
+                    thread.Start();
+                    clientSend("+BACKUP");
+
+                }
+
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Errore di rete");
+                Application.Current.Shutdown();
             }
 
+           
            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            clientSend("RESTORE");
+            try
+            {
+                clientSend("RESTORE"); 
+            }
+            catch(Exception e1)
+            {
+                MessageBox.Show("Errore di rete");
+                Application.Current.Shutdown();
+            }
 
         }
 
@@ -222,12 +260,19 @@ namespace clientTCP
         {
             if (client.isConnected())
                 client.sendCommand(text, client.CLIENT.GetStream());
+            else
+            {
+                MessageBox.Show("Errore di rete");
+                Application.Current.Shutdown(); 
+            }
         }
 
 
 
         private void clientRecive()
         {
+           
+            
             if (client.isConnected())
             {
                 new Thread(() =>
@@ -235,17 +280,28 @@ namespace clientTCP
                     string cmd;
                     NetworkStream ns = client.CLIENT.GetStream();
                     // Send the message to the connected TcpServer.
-                    while (_isRunning )
+               
+
+                    while (_isRunning  && !Shutdown)
                     {
+                       
                         try
                         {
                             cmd = client.reciveComand(ns);
+                            Console.WriteLine(cmd);
+                            if (cmd == null)
+                            {
+                                _isRunning = false;
+                                return;
+                            }
                             if (cmd.Equals("++CLOSE"))
                             {
                                 client.close();
                                 _isRunning = false;
+                                Application.Current.Shutdown();
                                 return;
                             }
+                            if (cmd == null){_isRunning = false; return;}
                             if (cmd.Equals("+++LIST"))
                             {
                                 int dim = client.reciveDimension(ns);
@@ -273,7 +329,7 @@ namespace clientTCP
                             {
                                 dir.Text += "Wait to command\n";
                             }), DispatcherPriority.ContextIdle);
-
+                            if (cmd == null) { _isRunning = false; return; }
                             if (cmd.Equals("+BACKUP"))
                             {
                                 dir.Dispatcher.Invoke(new Action(() =>
@@ -281,58 +337,88 @@ namespace clientTCP
                                     dir.Text += "Sono nel backup\n";
                                 }), DispatcherPriority.ContextIdle);
                                 client.sendFileDimension(xml.Length, ns);
-                                MessageBox.Show(""+xml.Length);
+                                //   MessageBox.Show(""+xml.Length);
+                                Console.WriteLine("Crash");
                                 cmd = client.reciveComand(ns);
+                                if (cmd == null) { _isRunning = false; return; }
                                 if (cmd.Equals("+++++OK"))
                                 {
+                                    Console.WriteLine("Crash dopo OK");
                                     dir.Dispatcher.Invoke(new Action(() =>
                                     {
                                         dir.Text += "Ok \n";
                                     }), DispatcherPriority.ContextIdle);
+
                                     client.sendData(xml, ns);
+                                    Console.WriteLine("Crash Send Data");
+                                    dir.Dispatcher.Invoke(new Action(() =>
+                                    {
+                                        dir.Text += "Send XML \n";
+
+                                    }), DispatcherPriority.ContextIdle);
+
+                                
                                     cmd = client.reciveComand(ns);
-                                    if (cmd.Equals("+UPLOAD"))
+                                    if (cmd == null) { _isRunning = false; return; }
+                                    Console.WriteLine("Crash Send ok");
+                                    if (cmd.Equals("+++++OK"))
                                     {
                                         try
                                         {
-                                            dir.Dispatcher.Invoke(new Action(() =>
-                                            {
-                                                dir.Text += "Inizio l'upload\n";
-                                            }), DispatcherPriority.ContextIdle);
-                                            client.sendData("+++++OK", ns);
-                                            int totale = lstFilesFound.Count;
-                                            int i = 0;      
-                                            foreach (String path in lstFilesFound)
-                                            {
-                                                pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (i * 100) / totale; count.Text = (i * 100) / totale + "%"; }, DispatcherPriority.Background);
-                                                cmd = client.reciveComand(ns);
-                                                if (cmd.Equals("+++FILE"))
-                                                {
-                                                    dir.Dispatcher.Invoke(new Action(() =>
-                                                    {
-                                                        dir.Text += "Invio il File " + i + "\n";
-                                                    }), DispatcherPriority.ContextIdle);
-                                                    
-                                                    client.sendFile(path, ns);
-                                                    i++;
-                                                    if (client.reciveComand(ns) == "+++++OK")
-                                                        client.sendCommand("+++++OK", ns);
-
-                                                }
-                                            }
-                                            pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (totale * 100) / totale; count.Text = (totale * 100) / totale + "%"; }, DispatcherPriority.Background);
+                                            cmd = client.reciveComand(ns);
                                         }
-                                        catch (Exception e)
+                                        catch (IOException ioe)
                                         {
-                                            MessageBox.Show("Connesione Persa!");
-                                            return;
+                                            
+                                            Application.Current.Shutdown();
                                         }
+                                        if (cmd == null) { _isRunning = false; return; }
+                                        if (cmd.Equals("+UPLOAD"))
+                                        {
+                                            Console.WriteLine("Crash Upload ok");
+                                            try
+                                            {
+                                                dir.Dispatcher.Invoke(new Action(() =>
+                                                {
+                                                    dir.Text += "Inizio l'upload\n";
+                                                }), DispatcherPriority.ContextIdle);
+                                                client.sendData("+++++OK", ns);
+                                                int totale = lstFilesFound.Count;
+                                                int i = 0;
+                                                foreach (String path in lstFilesFound)
+                                                {
+                                                    pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (i * 100) / totale; count.Text = (i * 100) / totale + "%"; }, DispatcherPriority.Background);
+                                                    cmd = client.reciveComand(ns);
+                                                    if (cmd == null) { _isRunning = false; return; }
+                                                    if (cmd.Equals("+++FILE"))
+                                                    {
+                                                        Console.WriteLine("Crash File");
+                                                        dir.Dispatcher.Invoke(new Action(() =>
+                                                        {
+                                                            dir.Text += "Invio il File " + i + "\n";
+                                                        }), DispatcherPriority.ContextIdle);
+
+                                                        client.sendFile(path, ns);
+                                                        i++;
+                                                        if (client.reciveComand(ns) == "+++++OK")
+                                                            client.sendCommand("+++++OK", ns);
+
+                                                    }
+                                                }
+                                                pbStatus.Dispatcher.Invoke(() => { pbStatus.Value = (totale * 100) / totale; count.Text = (totale * 100) / totale + "%"; }, DispatcherPriority.Background);
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                MessageBox.Show("Connesione Persa!");
+                                                return;
+                                            }
+                                        }
+                                        clientSend("+++LIST");
+                                        cmd = "";
                                     }
-                                    clientSend("+++LIST");
-                                    cmd = "";
                                 }
                             }
-
+                            if (cmd == null) { _isRunning = false; return; }
                             if (cmd.Equals("RESTORE"))
                             {
                                 dir.Dispatcher.Invoke(new Action(() =>
@@ -354,21 +440,29 @@ namespace clientTCP
                                         client.sendFileDimension(toRestore.Length, client.CLIENT.GetStream());
                                         string mycmd = client.reciveComand(client.CLIENT.GetStream());
                                         Console.WriteLine(mycmd);
+                                        if (cmd == null) { _isRunning = false; return; }
                                         if (mycmd.Equals("+++++OK"))
                                         {
                                             client.sendData(toRestore, client.CLIENT.GetStream());
                                             mycmd = client.reciveComand(client.CLIENT.GetStream());
                                             Console.WriteLine(mycmd);
+                                            if (cmd == null) { _isRunning = false; return; }
                                             if (mycmd.Equals("+++++OK"))
                                             {
-                                                while (true)
+                                                int i = 0;
+                                                Boolean Next = true;
+                                                while (Next)
                                                 {
                                                     mycmd = client.reciveComand(client.CLIENT.GetStream());
-                                                    if (mycmd.Equals("++++END")) break;
+                                                    Console.WriteLine(mycmd);
+                                                    if (mycmd == null) { _isRunning = false; return; }
+                                                    if (mycmd.Equals("++++END")) { Console.WriteLine("Finito"); break; };
 
-                                                    if (mycmd.Equals("+++FILE") || mycmd.Equals("+++NEXT"))
+                                                    if (mycmd.Equals("+++FILE"))
                                                     {
 
+                                                        Console.WriteLine("Numero : " + i);
+                                                        i++;
                                                         int dim = client.reciveDimension(client.CLIENT.GetStream());
                                                         client.sendCommand("+++++OK", client.CLIENT.GetStream());
                                                         string relative = client.reciveVersion(dim, client.CLIENT.GetStream());
@@ -383,17 +477,25 @@ namespace clientTCP
                                                         client.sendCommand("+++++OK", client.CLIENT.GetStream());
                                                         client.ReciveFile(Directory.GetCurrentDirectory() + @"\" + backupFolder + @"\" + cb.NAME + @"\" + cb.VERSION + @"\", relative, name, dim, client.CLIENT.GetStream());
                                                         Console.WriteLine("finish\n");
+                                                        
                                                         clientSend("+++++OK");
 
                                                     }
                                                 }
+                                                Console.WriteLine("Restore Completato!");
+                                                MessageBox.Show("Restore Completato");
+                                                Console.WriteLine(cmd);
+                                                cmd = "";
+
                                             }
+                                            
                                         }
                                     }
                                 }
                             }
                         } catch (Exception e)
                         {
+                            Console.WriteLine(e.Message);
                             MessageBox.Show("Connessione persa!");
                             return;
                         }
@@ -416,23 +518,82 @@ namespace clientTCP
             watcher.Filter = "*.*";
             watcher.Changed += new FileSystemEventHandler(OnChanged);
             watcher.Created += new FileSystemEventHandler(OnChanged);
-            watcher.Deleted += new FileSystemEventHandler(OnChanged);
+            watcher.Deleted += new FileSystemEventHandler(OnChangedDelete);
             watcher.EnableRaisingEvents = true;
+            if (!_isRunning) return;
         }
 
         public void OnChanged(object source, FileSystemEventArgs e)
         {
+            watcher.EnableRaisingEvents = false;
             this.lstFilesFound.Clear();
             this.info.Clear();
             this.files.Clear();
+          //  MessageBox.Show(e.FullPath);
+
+            while (IsFileLocked(e.FullPath))
+            {
+                Console.WriteLine("Attendo che la copia sia completata");
+            }
+           // MessageBox.Show("fuori");
 
             DirSearch(absolutePath);
             classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
             xml = classes.Function.DictToXml(this.files, relativePath);
-            
-            MessageBox.Show("Rilevata modifica dei files presenti nella cartella selezionata\n Aggiornamento versione Backup");
-            clientSend("+BACKUP"); 
 
+            MessageBox.Show("Rilevata modifica dei files presenti nella cartella selezionata\n Aggiornamento versione Backup");
+            clientSend("+BACKUP");
+            watcher.EnableRaisingEvents = true;
+
+        }
+
+        public void OnChangedDelete(object source, FileSystemEventArgs e)
+        {
+   
+            this.lstFilesFound.Clear();
+            this.info.Clear();
+            this.files.Clear();
+         //   MessageBox.Show(e.FullPath);
+        
+
+            DirSearch(absolutePath);
+            classes.Function.createXmlToSend(this.lstFilesFound, this.info, this.files);
+            xml = classes.Function.DictToXml(this.files, relativePath);
+
+            MessageBox.Show("Rilevata modifica dei files presenti nella cartella selezionata\n Aggiornamento versione Backup");
+            clientSend("+BACKUP");
+           
+
+        }
+
+        private bool IsFileLocked(string FullPath)
+        {
+            FileInfo file = new FileInfo(FullPath);
+            FileStream stream = null;
+
+            try
+            {
+               
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+                if (stream.Length == 0)
+                    return true;
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+
+            //file is not locked
+            return false;
         }
 
         private void disconnect_Click(object sender, RoutedEventArgs e)
@@ -440,6 +601,7 @@ namespace clientTCP
             try
             {
                 client.sendCommand("++CLOSE", client.CLIENT.GetStream());
+                _isRunning = false;
                 this.Close();
                 parent.Activate();
                 parent.Show();
@@ -448,8 +610,10 @@ namespace clientTCP
                 Console.WriteLine(e1.Message);
                 _isRunning = false;
                 MessageBox.Show("Errore di rete, Server offline");
+                client.close();
                 //this.Hide();
                 this.Close();
+                Application.Current.Shutdown();
             }
 
         }

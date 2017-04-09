@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
+using System.Threading;
 
 namespace clientTCP.Utils
 {
@@ -27,6 +28,7 @@ namespace clientTCP.Utils
         {
             using (var md5 = SHA256Cng.Create())
             {
+        
                 this.md5String = md5.ComputeHash(File.ReadAllBytes(filePath));
             }
         }

@@ -212,3 +212,138 @@ C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTC
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.exe
 C:\Users\gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
 C:\Users\Gianpiero\Source\Repos\ClientPDS\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources
+C:\Users\Izio\Desktop\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources
+C:\Users\Izio\Source\Repos\ClientPDS-master\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources
+C:\Users\Izio\Source\Repos\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources
+C:\Users\Izio\Desktop\Nuova cartella\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\applicationIcon.ico
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Icon\MainIconName.png
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe.config
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.exe
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\clientTCP.pdb
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.dll
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.xml
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.baml
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.baml
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.baml
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\FolderBackup.g.cs
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\RegisterWindow.g.cs
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\MainWindow.g.cs
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\App.g.cs
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP_MarkupCompile.cache
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.g.resources
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Properties.Resources.resources
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.Trayicon.resources
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csproj.GenerateResource.Cache
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.exe
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.pdb
+C:\Users\Gianpiero\Desktop\ClientPDS-master\clientTCP\clientTCP\obj\Debug\clientTCP.csprojResolveAssemblyReference.cache
